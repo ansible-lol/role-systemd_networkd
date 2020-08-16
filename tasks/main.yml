@@ -1,13 +1,13 @@
 ---
 
 - name: Set deprecated services
-  systemctl:
+  systemd:
     name: "networking"
     enable: "{{ not(systemd_networkd::disable_deprecated | default (true)) }}"
     mask: "{{ systemd_networkd::disable_deprecated | default (true) }}"
 
 - name: Set systemd-network
-  systemctl:
+  systemd:
     name: "systemd-networkd"
     enable: "{{ systemd_networkd::enable | default(true) }}"
     mask: "{{ not(systemd_networkd::enable | default(true)) }}"
