@@ -1,2 +1,22 @@
 ---
-# defaults file for role-systemd_networkd
+
+# enable role
+systemd_networkd::enable: true
+
+# disable deprecated services
+systemd_networkd::disable_deprecated: true
+
+# if true, remove all systemd-networkd configuration not defined by role
+systemd_networkd::authoritative: false
+
+# empty by default
+systemd_networkd::configuration::links: {}
+
+# empty by default
+systemd_networkd::configuration::netdevs: {}
+
+# run dhcp on all interfaces by default
+systemd_networkd::configuration::networks:
+  default:
+    Network:
+      DHCP: 'yes'
