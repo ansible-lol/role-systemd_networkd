@@ -4,10 +4,10 @@
   systemd:
     name: "networking"
     enable: "{{ not(vars['systemd_networkd::disable_deprecated'] | default (true)) }}"
-    mask: "{{ vars['systemd_networkd::disable_deprecated'] | default (true) }}"
+    masked: "{{ vars['systemd_networkd::disable_deprecated'] | default (true) }}"
 
 - name: Set systemd-network
   systemd:
     name: "systemd-networkd"
     enable: "{{ vars['systemd_networkd::enable'] | default(true) }}"
-    mask: "{{ not(vars['systemd_networkd::enable'] | default(true)) }}"
+    masked: "{{ not(vars['systemd_networkd::enable'] | default(true)) }}"
