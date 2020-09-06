@@ -1,12 +1,14 @@
 ---
 
 - name: Set deprecated services
+  become: true
   systemd:
     name: "networking"
     enabled: "{{ not(vars['systemd_networkd::disable_deprecated']) | default(false) }}"
     masked: "{{ vars['systemd_networkd::disable_deprecated'] | default (true) }}"
 
 - name: Set systemd-network
+  become: true
   systemd:
     name: "systemd-networkd"
     enabled: "{{ vars['systemd_networkd::enable'] | default(true) }}"
