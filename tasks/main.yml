@@ -10,4 +10,4 @@
   systemd:
     name: "systemd-networkd"
     enabled: "{{ vars['systemd_networkd::enable'] | default(true) }}"
-    masked: {{ not(vars['systemd_networkd::enable']) | default(true)) }}
+    masked: "{{ not(vars['systemd_networkd::enable'] | default(true)) }}"
